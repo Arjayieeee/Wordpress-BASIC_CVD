@@ -8,15 +8,13 @@
 
 <?php get_header();?>
 
-            <?php
-                $args = array(
-                'post_type' => 'services',
-                'posts_per_page' => -1,  
-                
-                );
-                $newQuery = new WP_Query($args)
-
-                ?>
+    <?php
+        $args = array(
+        'post_type' => 'services',
+        'posts_per_page' => -1,
+        );
+        $newQuery = new WP_Query($args)
+    ?>
 
 <?php if ($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
 
@@ -24,8 +22,6 @@
     <div class="container">
         <div class="service__wrapper">
             <div class="web">
-
-
             
                 <div class="service__text">
                     <h1><?php the_title()?></h1>
@@ -38,7 +34,6 @@
                 </div>
                 <?php echo get_the_post_thumbnail() ?>
             </div>
-   
             
         </div>
     </div>
@@ -47,15 +42,15 @@
         </div>
 </section>
 
-         
 <?php
-            endwhile;
-                else:
-                echo"no available content";
-                endif;
-                wp_reset_postdata();
-           ?>
+    endwhile;
+        else:
+        echo"no available content";
+        endif;
+        wp_reset_postdata();
+?>
 
+<?php include('contactus.php'); ?>
 
 <?php get_footer();?>   
 

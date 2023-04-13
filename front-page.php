@@ -42,7 +42,7 @@
                 <i class="<?php echo get_field('service_icon') ?>"></i>
                 <h4><?php the_title() ?> </h4>
                 <p><?php the_content() ?></p>
-                <a class="btn bg--yellow"href=""><?php echo get_field('service_link')?></a>
+                <a class="btn bg--yellow"href="<?php echo site_url('services') ?>"><?php echo get_field('service_link')?></a>
             </div>
             <?php
               
@@ -93,20 +93,19 @@ $newQuery = new WP_Query($args)
 ?>
 <?php if ($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
                 <div class="latest__card">
-                  <?php echo get_the_post_thumbnail();?>
+                <?php echo get_the_post_thumbnail();?>
                     <div class="card__text">
                     <h2><?php the_title() ?></h2>
                     <p><?php the_content() ?></p>
-                    <a href=""><?php echo get_field('trends_link')?></a>
-                    </div>
+                    <a href="<?php echo get_the_permalink()?>">Read more...</a>
+                </div>
                 </div>   
                 <?php
-              
             endwhile;
-           else:
-           echo"no available content";
-           endif;
-           wp_reset_postdata();
+            else:
+            echo"no available content";
+            endif;
+            wp_reset_postdata();
            ?>          
         </div>
 </section>
